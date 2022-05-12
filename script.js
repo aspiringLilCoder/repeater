@@ -55,10 +55,19 @@ function createWord(word, boo) {
 //deleting a word
 
 function deleteWord(e) {
-    (e.parentNode).remove();
-    const index = wordList.indexOf(e.nextElementSibling.textContent);
-    wordList.splice(index, 1); 
-    saveToLocal();
+    document.querySelector('.modal').style.display = 'block';
+
+    document.querySelector('#yes').addEventListener('click', () => {
+        (e.parentNode).remove();
+        const index = wordList.indexOf(e.nextElementSibling.textContent);
+        wordList.splice(index, 1); 
+        saveToLocal();
+        document.querySelector('.modal').style.display = 'none';
+    })
+
+    document.querySelector('#no').addEventListener('click', () => {
+        document.querySelector('.modal').style.display = 'none';
+    })
 }
 
 //resetSelected 
