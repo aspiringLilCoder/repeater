@@ -54,21 +54,26 @@ function createWord(word, boo) {
 
 //deleting a word
 
+let wordDelete;
+
 function deleteWord(e) {
     document.querySelector('.modal').style.display = 'block';
-
-    document.querySelector('#yes').addEventListener('click', () => {
-        (e.parentNode).remove();
-        const index = wordList.indexOf(e.nextElementSibling.textContent);
-        wordList.splice(index, 1); 
-        saveToLocal();
-        document.querySelector('.modal').style.display = 'none';
-    })
-
-    document.querySelector('#no').addEventListener('click', () => {
-        document.querySelector('.modal').style.display = 'none';
-    })
+    wordDelete = e;
 }
+
+document.querySelector('#yes').addEventListener('click', () => {
+    (wordDelete.parentNode).remove();
+    const index = wordList.indexOf(wordDelete.nextElementSibling.textContent);
+    wordList.splice(index, 1); 
+    saveToLocal();
+    document.querySelector('.modal').style.display = 'none';
+    console.log('deleted');
+})
+
+document.querySelector('#no').addEventListener('click', () => {
+    document.querySelector('.modal').style.display = 'none';
+    console.log('not deleted');
+})
 
 //resetSelected 
 function resetSelected() {
