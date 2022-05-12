@@ -83,6 +83,7 @@ button {
     padding-left: 50px;
     margin: 25px;
     font-size:25px;
+    flex-direction: row-reverse;
 }
 
 .word-text {
